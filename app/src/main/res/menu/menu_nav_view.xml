@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_opcion_1"
+        android:icon="@drawable/ic_menu"
+        android:title="Opción 1"
+        android:checkable="true"/>
+    <item
+        android:id="@+id/menu_opcion_2"
+        android:icon="@drawable/ic_menu"
+        android:title="Opción 2"
+        android:checkable="true"/>
+    <item
+        android:id="@+id/menu_opcion_3"
+        android:icon="@drawable/ic_menu"
+        android:title="Opción 3"
+        android:checkable="true"/>
+
+    <item android:id="@+id/navigation_subheader"
+        android:title="Otras opciones">
+        <menu>
+            <item
+                android:id="@+id/menu_subopcion_1"
+                android:icon="@drawable/ic_menu"
+                android:title="SubOpción 1"
+                android:checkable="true"/>
+            <item
+                android:id="@+id/menu_subopcion_2"
+                android:icon="@drawable/ic_menu"
+                android:title="SubOpción 2"
+                android:checkable="true"/>
+        </menu>
+    </item>
+
+</menu>
+
