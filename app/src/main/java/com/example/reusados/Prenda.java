@@ -7,6 +7,7 @@ public class Prenda {
     private String precio;
     private String nombre;
     private String talla;
+    private String marca;
     private Bitmap imagenPrenda;
 
     public Prenda(String urlPrenda, String precio, String nombre, String talla, Bitmap imagenPrenda) {
@@ -17,10 +18,27 @@ public class Prenda {
         this.imagenPrenda = imagenPrenda;
     }
 
+    public Prenda(String urlImagenPrenda, String precio, String nombre, String talla, String marca) {
+        this.urlImagenPrenda = urlImagenPrenda;
+        this.precio = precio;
+        this.nombre = nombre;
+        this.talla = talla;
+        this.marca = marca;
+    }
+
     public Prenda(String urlPrenda, String precio, String nombre) {
         this.urlImagenPrenda = urlPrenda;
         this.precio = precio;
         this.nombre = nombre;
+    }
+
+    public Prenda(String urlImagenPrenda, String precio, String nombre, String talla, String marca, Bitmap imagenPrenda) {
+        this.urlImagenPrenda = urlImagenPrenda;
+        this.precio = precio;
+        this.nombre = nombre;
+        this.talla = talla;
+        this.marca = marca;
+        this.imagenPrenda = imagenPrenda;
     }
 
     public Prenda(String urlPrenda, String precio, String nombre, String talla) {
@@ -44,6 +62,14 @@ public class Prenda {
 
     public void setUrlImagenPrenda(String urlImagenPrenda) {
         this.urlImagenPrenda = urlImagenPrenda;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
     }
 
     public String getPrecio() {

@@ -4,7 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".FragmentMain"
-    android:id="@+id/fragmentMain">
+    android:id="@+id/fragmentMain"
+    android:background="#FFFFFF"
+    >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,7 +16,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:layout_marginTop="50dp"
 />
 
     </LinearLayout>

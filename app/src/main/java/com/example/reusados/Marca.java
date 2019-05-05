@@ -7,6 +7,7 @@ public class Marca {
     private String url;
     private Bitmap imgMarca;
 
+    public Marca(){}
     public Marca(String url, Bitmap imgMarca) {
         this.url = url;
         this.imgMarca = imgMarca;

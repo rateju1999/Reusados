@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "115165112823",
+    "firebase_url": "https://reusados-d56ce.firebaseio.com",
+    "project_id": "reusados-d56ce",
+    "storage_bucket": "reusados-d56ce.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:115165112823:android:642f9af00267d7f6",
+        "android_client_info": {
+          "package_name": "com.example.reusados"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "115165112823-2984drve38qdatpa6mgmospies96l4b5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.reusados",
+            "certificate_hash": "6467cb1730cc7e54fdc13d095b2fab2cf43469af"
+          }
+        },
+        {
+          "client_id": "115165112823-dcpncq492mcou86la37fvoiju6pfd8vv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrDa5heySlUaNlCpr6iGfNyc4x8_wUQjw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "115165112823-dcpncq492mcou86la37fvoiju6pfd8vv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
