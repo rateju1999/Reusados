@@ -9,6 +9,7 @@ public class Prenda {
     private String talla;
     private String marca;
     private Bitmap imagenPrenda;
+    public Prenda(){}
 
     public Prenda(String urlPrenda, String precio, String nombre, String talla, Bitmap imagenPrenda) {
         this.urlImagenPrenda = urlPrenda;

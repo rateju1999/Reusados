@@ -47,9 +47,14 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
 
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        FragmentMain fragmentoMain = FragmentMain.newInstance();
+//        FragmentMain fragmentoMain = FragmentMain.newInstance();
+//
+//        fragmentTransaction.replace(R.id.fragment_container, fragmentoMain);
+
+        FragmentPrenda fragmentoMain = FragmentPrenda.newInstance("articulos");
 
         fragmentTransaction.replace(R.id.fragment_container, fragmentoMain);
+
 //        FragmentTiposPrenda fragmentoMain = FragmentTiposPrenda.newInstance();
 //
 //        fragmentTransaction.replace(R.id.fragment_container, fragmentoMain);

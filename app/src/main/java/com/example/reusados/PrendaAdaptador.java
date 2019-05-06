@@ -20,10 +20,9 @@ public class PrendaAdaptador extends RecyclerView.Adapter<PrendaAdaptador.Prenda
     private Context context;
     private View.OnClickListener mListener;
 
-    public PrendaAdaptador(ArrayList<Prenda> prendas, Context context, View.OnClickListener mListener) {
+    public PrendaAdaptador(ArrayList<Prenda> prendas, Context context) {
         this.prendas = prendas;
         this.context = context;
-        this.mListener = mListener;
     }
 
     @Override
