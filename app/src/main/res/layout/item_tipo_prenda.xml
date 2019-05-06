@@ -8,7 +8,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#DFDCDC">
+        android:background="#F1F0F0">
    <ImageView
        android:id="@+id/imagen_tipo_prenda"
        android:layout_alignParentLeft="true"

@@ -36,6 +36,8 @@ public class PrendaAdaptador extends RecyclerView.Adapter<PrendaAdaptador.Prenda
 
     @Override
     public void onBindViewHolder(PrendaViewHolder holder, int position) {
+        holder.nombre.setText(prendas.get(position).getNombre());
+        holder.precio.setText(prendas.get(position).getPrecio() + "€");
         Bitmap imagen = prendas.get(position).getImagenPrenda();
         if(imagen == null) {
             holder.imagen_prenda.setImageResource(R.drawable.right_arrow);
