@@ -20,7 +20,6 @@ public class TipoPrendaViewHolder extends RecyclerView.ViewHolder{
     public void bindItem (TipoPrenda prenda){
         texto_tipo_prenda.setText(prenda.getTipo());
 
-//        imagen_tipo_prenda.setImageResource(R.drawable.abrigo_opt);
         imagen_tipo_prenda.setImageResource(prenda.getImagen());
   }
 }
