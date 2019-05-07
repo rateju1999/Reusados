@@ -40,7 +40,7 @@ public class PrendaAdaptador extends RecyclerView.Adapter<PrendaAdaptador.Prenda
         holder.precio.setText(prendas.get(position).getPrecio() + "€");
         Bitmap imagen = prendas.get(position).getImagenPrenda();
         if(imagen == null) {
-            holder.imagen_prenda.setImageResource(R.drawable.right_arrow);
+            holder.imagen_prenda.setImageResource(R.drawable.icono_reusados_cargando);
             new DownloadImageTask(holder.imagen_prenda, position)
                     .execute(prendas.get(position).getUrlImagenPrenda());
         }else{

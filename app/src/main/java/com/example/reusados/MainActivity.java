@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
         //Menu Navigation listener
         navView = (NavigationView) findViewById(R.id.nav_view);
         navView.setNavigationItemSelectedListener(this);
-        FragmentManager fragmentManager = getSupportFragmentManager();
+               FragmentManager fragmentManager = getSupportFragmentManager();
 
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
@@ -51,13 +51,16 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
 //
 //        fragmentTransaction.replace(R.id.fragment_container, fragmentoMain);
 
+
 //        FragmentPrenda fragmentoMain = FragmentPrenda.newInstance("articulos");
 //
 //        fragmentTransaction.replace(R.id.fragment_container, fragmentoMain);
 
+//
         FragmentTiposPrenda fragmentoMain = FragmentTiposPrenda.newInstance();
 
         fragmentTransaction.replace(R.id.fragment_container, fragmentoMain);
+
 
         fragmentTransaction.commit();
     }

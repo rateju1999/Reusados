@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Switch;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -36,10 +37,8 @@ public class FragmentPrenda extends Fragment implements ChildEventListener,View.
         fragment.setArguments(args);
         return fragment;
     }
-    public FragmentPrenda() {
-        // Required empty public constructor
-    }
 
+    //HE QUITADO ON ATTACH, ON DETACH SI FALLA POR ALGUN MOTIVO EXTRAÑO VUELVELOS A INSERTAR
     public static FragmentPrenda newInstance(String param1, String param2) {
         FragmentPrenda fragment = new FragmentPrenda();
         Bundle args = new Bundle();
@@ -68,28 +67,14 @@ public class FragmentPrenda extends Fragment implements ChildEventListener,View.
        myAdapter = new PrendaAdaptador(prendas,getActivity());
        myAdapter.setOnClickListener(this);
        recyclerView.setAdapter(myAdapter);
-        //PARTE DEL FIREBASE
-        Query bdNodoReusados = FirebaseDatabase.getInstance().getReference()
-                .child("articulos");
-        bdNodoReusados.addChildEventListener(this);
-        return vistaLayout;
+        rellenadoDelRecycler(busqueda);
+         return vistaLayout;
     }
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
+    public void onClick(View view) {
 
     }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
+    public FragmentPrenda() {
     }
 
     @Override
@@ -120,13 +105,105 @@ public class FragmentPrenda extends Fragment implements ChildEventListener,View.
 
     }
 
-    @Override
-    public void onClick(View view) {
-
-    }
 
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
-}
+
+    public void rellenadoDelRecycler(String palabra) {
+        boolean flag = true;
+        String busqueda = null;
+        Query bdNodoReusados = null;
+        switch (palabra) {
+            case "ADIDAS":
+                flag = false;
+                busqueda = "ADIDAS";
+                break;
+            case "CHAMPION":
+                flag = false;
+                busqueda = "CHAMPION";
+                break;
+            case "FILA":
+                flag = false;
+                busqueda = "FILA";
+                break;
+            case "KAPPA":
+                flag = false;
+                busqueda = "KAPPA";
+                break;
+            case "NIKE":
+                flag = false;
+                busqueda = "NIKE";
+                break;
+            case "NORTH FACE":
+                flag = false;
+                busqueda = "NORTH FACE";
+                break;
+            case "PUMA":
+                flag = false;
+                busqueda = "PUMA";
+                break;
+            case "RALPH LAUREN":
+                flag = false;
+                busqueda = "RALPH LAUREN";
+                break;
+            case "REEBOK":
+                flag = false;
+                busqueda = "REEBOK";
+                break;
+            case "TOMMY HILFIGER":
+                flag = false;
+                busqueda = "TOMMY HILFIGER";
+                break;
+            case "ABRIGO":
+                flag = true;
+                busqueda = "abrigo";
+                break;
+            case "BOMBER":
+                flag = true;
+                busqueda = "bomber";
+                break;
+            case "CHAQUETA":
+                flag = true;
+                busqueda = "chaqueta";
+                break;
+            case "DEPORTE":
+                flag = true;
+                busqueda = "deporte";
+                break;
+            case "HAWAIANA":
+                flag = true;
+                busqueda = "hawaiana";
+                break;
+            case "POLO":
+                flag = true;
+                busqueda = "polo";
+                break;
+            case "SUDADERA":
+                flag = true;
+                busqueda = "sudadera";
+                break;
+            case "ZAPATILLAS":
+                flag = true;
+                busqueda = "zapatilla";
+                break;
+            default:
+
+                break;
+
+
+        }
+
+        if (flag == true) {
+             bdNodoReusados = FirebaseDatabase.getInstance().getReference()
+                    .child("prendas").child(busqueda);
+        } else if (flag == false) {
+             bdNodoReusados = FirebaseDatabase.getInstance().getReference()
+                .child("articulos").orderByChild("marca").equalTo(busqueda);
+        }
+        bdNodoReusados.addChildEventListener(this);
+
+    }
+
+    }

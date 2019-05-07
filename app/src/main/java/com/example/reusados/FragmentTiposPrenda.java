@@ -4,6 +4,8 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -51,15 +53,15 @@ public class FragmentTiposPrenda extends Fragment  implements  View.OnClickListe
         tipoPrendaAdaptador = new TipoPrendaAdaptador(tipos,getActivity());
         tipoPrendaAdaptador.setOnClickListener(this);
         recyclerView.setAdapter(tipoPrendaAdaptador);
-        tipos.add(new TipoPrenda("ABRIGO",R.drawable.abrigo_opt));
-        tipos.add(new TipoPrenda("BOMBER",R.drawable.bomber_opt));
-        tipos.add(new TipoPrenda("CHAQUETA",R.drawable.chaqueta_opt));
-        tipos.add(new TipoPrenda("DEPORTE",R.drawable.deporte_opt));
-        tipos.add(new TipoPrenda("HAWAIANA",R.drawable.hawaiana_opt));
-        tipos.add(new TipoPrenda("JERSEY",R.drawable.jersey_opt));
-        tipos.add(new TipoPrenda("POLO",R.drawable.polo_opt));
-        tipos.add(new TipoPrenda("SUDADERA",R.drawable.sudadera_opt));
-        tipos.add(new TipoPrenda("ZAPATILLAS",R.drawable.zapatilla_opt));
+        tipos.add(new TipoPrenda("ABRIGO",R.drawable.abrigo_sf));
+        tipos.add(new TipoPrenda("BOMBER",R.drawable.bomber_sf));
+        tipos.add(new TipoPrenda("CHAQUETA",R.drawable.chaqueta_sf));
+        tipos.add(new TipoPrenda("DEPORTE",R.drawable.deporte_sf));
+        tipos.add(new TipoPrenda("HAWAIANA",R.drawable.hawaiana_sf));
+        tipos.add(new TipoPrenda("JERSEY",R.drawable.jersey_sf));
+        tipos.add(new TipoPrenda("POLO",R.drawable.polo_sf));
+        tipos.add(new TipoPrenda("SUDADERA",R.drawable.sudadera_sf));
+        tipos.add(new TipoPrenda("ZAPATILLAS",R.drawable.zapatilla_sf));
 
         tipoPrendaAdaptador.notifyDataSetChanged();
 
@@ -82,6 +84,13 @@ public class FragmentTiposPrenda extends Fragment  implements  View.OnClickListe
 
     @Override
     public void onClick(View view) {
+        int position = recyclerView.getChildAdapterPosition(view);
+        TipoPrenda tipoPrendaSeleccinada = tipos.get(position);
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        FragmentPrenda fragmentoMain = FragmentPrenda.newInstance(tipoPrendaSeleccinada.getTipo());
+        fragmentTransaction.replace(R.id.fragment_container, fragmentoMain);
+        fragmentTransaction.commit();
 
     }
 }

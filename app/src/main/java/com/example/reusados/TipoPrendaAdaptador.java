@@ -1,5 +1,6 @@
 package com.example.reusados;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -41,7 +42,9 @@ public class TipoPrendaAdaptador extends RecyclerView.Adapter<TipoPrendaViewHold
 
     @Override
     public void onClick(View view) {
-
+      if(mlistener != null){
+          mlistener.onClick(view);
+      }
     }
     public void setOnClickListener(View.OnClickListener listener) {
         mlistener = listener;
