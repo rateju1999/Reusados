@@ -1,14 +1,28 @@
 package com.example.reusados;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import java.io.InputStream;
 
 public class FragmentPrendaDetalle extends Fragment {
+
+    private static Prenda prendaPasada;
+    private ImageView imagen;
+    private TextView nombre, precio,talla;
+    private Button botonCompra;
 
 
     private OnFragmentInteractionListener mListener;
@@ -16,19 +30,11 @@ public class FragmentPrendaDetalle extends Fragment {
     public FragmentPrendaDetalle() {
     }
 
-    public static FragmentPrendaDetalle newInstance(Prenda prenda) {
 
-        Bundle args = new Bundle();
 
+    public static FragmentPrendaDetalle newInstance(Prenda prendaQueMePasan) {
         FragmentPrendaDetalle fragment = new FragmentPrendaDetalle();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    public static FragmentPrendaDetalle newInstance(String param1, String param2) {
-        FragmentPrendaDetalle fragment = new FragmentPrendaDetalle();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
+        prendaPasada = prendaQueMePasan;
         return fragment;
     }
 
@@ -41,7 +47,26 @@ public class FragmentPrendaDetalle extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_fragment_prenda_detalle, container, false);
+        View vistaLayout = inflater.inflate(R.layout.fragment_fragment_prenda_detalle, container, false);
+        imagen= vistaLayout.findViewById(R.id.detalle_prenda_imagen);
+        nombre= vistaLayout.findViewById(R.id.detalle_nombre);
+        precio= vistaLayout.findViewById(R.id.detalle_precio);
+        talla= vistaLayout.findViewById(R.id.detalle_talla);
+        botonCompra = vistaLayout.findViewById(R.id.detale_boton);
+        //APAÑATELAS PARA SETEAR LA IMAGEN DESGRACIAO
+        //APAÑATELAS PARA SETEAR LA IMAGEN DESGRACIAO
+        //APAÑATELAS PARA SETEAR LA IMAGEN DESGRACIAO
+        //APAÑATELAS PARA SETEAR LA IMAGEN DESGRACIAO
+        //PIENSA QUE COÑO QUIERES HACER CON EL BOTON DE COMPRA
+        //PIENSA QUE COÑO QUIERES HACER CON EL BOTON DE COMPRA
+        //PIENSA QUE COÑO QUIERES HACER CON EL BOTON DE COMPRA
+        //PIENSA QUE COÑO QUIERES HACER CON EL BOTON DE COMPRA
+        //imagen.setImageResource();
+        nombre.setText(prendaPasada.getNombre());
+        precio.setText(prendaPasada.getPrecio()+"€");
+        talla.setText(prendaPasada.getTalla());
+
+        return vistaLayout;
     }
 
     public void onButtonPressed(Uri uri) {
@@ -64,5 +89,34 @@ public class FragmentPrendaDetalle extends Fragment {
 
     public interface OnFragmentInteractionListener {
         void onFragmentInteraction(Uri uri);
+    }
+    //TAREA ASINCRONA
+    public class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+        ImageView bmImage2;
+        String urldisplay;
+        int position;
+
+        public DownloadImageTask(ImageView Image, int position) {
+            this.bmImage2 = Image;
+            this.position = position;
+        }
+
+        protected Bitmap doInBackground(String... urls) {
+            urldisplay = urls[0];
+            Bitmap mIcon11 = null;
+            try {
+                InputStream in = new java.net.URL(urldisplay).openStream();
+                mIcon11 = BitmapFactory.decodeStream(in);
+            } catch (Exception e) {
+                Log.e("Error", e.getMessage());
+                e.printStackTrace();
+            }
+            return mIcon11;
+        }
+
+        protected void onPostExecute(Bitmap result) {
+            bmImage2.setImageBitmap(result);
+           // prendas.get(position).setImagenPrenda(result);
+        }
     }
 }

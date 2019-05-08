@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.dynamic.IFragmentWrapper;
+
 import java.io.InputStream;
 import java.util.ArrayList;
 
@@ -58,7 +60,9 @@ public class PrendaAdaptador extends RecyclerView.Adapter<PrendaAdaptador.Prenda
 
     @Override
     public void onClick(View view) {
-
+        if (mListener != null){
+            mListener.onClick(view);
+        }
     }
 
     public void setOnClickListener(View.OnClickListener listener) {mListener = listener;}
