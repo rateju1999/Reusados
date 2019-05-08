@@ -53,18 +53,16 @@ public class FragmentPrendaDetalle extends Fragment {
         precio= vistaLayout.findViewById(R.id.detalle_precio);
         talla= vistaLayout.findViewById(R.id.detalle_talla);
         botonCompra = vistaLayout.findViewById(R.id.detale_boton);
-        //APAÑATELAS PARA SETEAR LA IMAGEN DESGRACIAO
-        //APAÑATELAS PARA SETEAR LA IMAGEN DESGRACIAO
-        //APAÑATELAS PARA SETEAR LA IMAGEN DESGRACIAO
-        //APAÑATELAS PARA SETEAR LA IMAGEN DESGRACIAO
+
         //PIENSA QUE COÑO QUIERES HACER CON EL BOTON DE COMPRA
         //PIENSA QUE COÑO QUIERES HACER CON EL BOTON DE COMPRA
         //PIENSA QUE COÑO QUIERES HACER CON EL BOTON DE COMPRA
         //PIENSA QUE COÑO QUIERES HACER CON EL BOTON DE COMPRA
-        //imagen.setImageResource();
+        new DownloadImageTask(imagen)
+                .execute(prendaPasada.getUrlImagenPrenda());
         nombre.setText(prendaPasada.getNombre());
-        precio.setText(prendaPasada.getPrecio()+"€");
-        talla.setText(prendaPasada.getTalla());
+        precio.setText("Precio: " +prendaPasada.getPrecio()+"€");
+        talla.setText("Talla: " + prendaPasada.getTalla());
 
         return vistaLayout;
     }
@@ -94,11 +92,9 @@ public class FragmentPrendaDetalle extends Fragment {
     public class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
         ImageView bmImage2;
         String urldisplay;
-        int position;
 
-        public DownloadImageTask(ImageView Image, int position) {
+        public DownloadImageTask(ImageView Image) {
             this.bmImage2 = Image;
-            this.position = position;
         }
 
         protected Bitmap doInBackground(String... urls) {
@@ -116,6 +112,7 @@ public class FragmentPrendaDetalle extends Fragment {
 
         protected void onPostExecute(Bitmap result) {
             bmImage2.setImageBitmap(result);
+            imagen.setImageBitmap(result);
            // prendas.get(position).setImagenPrenda(result);
         }
     }

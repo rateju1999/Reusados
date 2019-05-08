@@ -80,6 +80,7 @@ public class FragmentPrenda extends Fragment implements ChildEventListener,View.
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         FragmentPrendaDetalle fragmentDetalle = FragmentPrendaDetalle.newInstance(prendaSeleccinada);
         fragmentTransaction.replace(R.id.fragment_container, fragmentDetalle);
+        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
     public FragmentPrenda() {

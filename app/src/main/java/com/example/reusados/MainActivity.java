@@ -47,9 +47,9 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
 
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-//        FragmentMain fragmentoMain = FragmentMain.newInstance();
-//
-//        fragmentTransaction.replace(R.id.fragment_container, fragmentoMain);
+        FragmentMain fragmentoMain = FragmentMain.newInstance();
+
+        fragmentTransaction.replace(R.id.fragment_container, fragmentoMain);
 
 
 //        FragmentPrenda fragmentoMain = FragmentPrenda.newInstance("articulos");
@@ -57,11 +57,11 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
 //        fragmentTransaction.replace(R.id.fragment_container, fragmentoMain);
 
 //
-        FragmentTiposPrenda fragmentoMain = FragmentTiposPrenda.newInstance();
+//        FragmentTiposPrenda fragmentoMain = FragmentTiposPrenda.newInstance();
+//
+//        fragmentTransaction.replace(R.id.fragment_container, fragmentoMain);
 
-        fragmentTransaction.replace(R.id.fragment_container, fragmentoMain);
-
-
+        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
 
@@ -88,6 +88,7 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
         }
 
         //Cambiamos el fragment
+
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, fragment)
                 .commit();
@@ -114,6 +115,18 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        int count = getSupportFragmentManager().getBackStackEntryCount();
+
+        if (count == 0) {
+            super.onBackPressed();
+            //additional code
+        } else {
+            getSupportFragmentManager().popBackStack();
+        }
     }
 }
 

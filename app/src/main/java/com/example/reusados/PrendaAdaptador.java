@@ -12,8 +12,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.android.gms.dynamic.IFragmentWrapper;
-
 import java.io.InputStream;
 import java.util.ArrayList;
 
@@ -31,7 +29,7 @@ public class PrendaAdaptador extends RecyclerView.Adapter<PrendaAdaptador.Prenda
     public PrendaViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view;
         LayoutInflater mInflater = LayoutInflater.from(context);
-        view = mInflater.inflate(R.layout.penda_item,parent,false);
+        view = mInflater.inflate(R.layout.item_prenda,parent,false);
         view.setOnClickListener(this);
         return new PrendaViewHolder(view);
     }
@@ -42,7 +40,7 @@ public class PrendaAdaptador extends RecyclerView.Adapter<PrendaAdaptador.Prenda
         holder.precio.setText(prendas.get(position).getPrecio() + "€");
         Bitmap imagen = prendas.get(position).getImagenPrenda();
         if(imagen == null) {
-            holder.imagen_prenda.setImageResource(R.drawable.icono_reusados_cargando);
+            holder.imagen_prenda.setImageResource(R.drawable.reusado_logo_bueno);
             new DownloadImageTask(holder.imagen_prenda, position)
                     .execute(prendas.get(position).getUrlImagenPrenda());
         }else{
@@ -62,6 +60,8 @@ public class PrendaAdaptador extends RecyclerView.Adapter<PrendaAdaptador.Prenda
     public void onClick(View view) {
         if (mListener != null){
             mListener.onClick(view);
+
+
         }
     }
 
@@ -97,6 +97,8 @@ public class PrendaAdaptador extends RecyclerView.Adapter<PrendaAdaptador.Prenda
             this.bmImage2 = Image;
             this.position = position;
         }
+
+
 
         protected Bitmap doInBackground(String... urls) {
             urldisplay = urls[0];

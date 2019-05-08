@@ -90,6 +90,7 @@ public class FragmentTiposPrenda extends Fragment  implements  View.OnClickListe
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         FragmentPrenda fragmentoMain = FragmentPrenda.newInstance(tipoPrendaSeleccinada.getTipo());
         fragmentTransaction.replace(R.id.fragment_container, fragmentoMain);
+        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
 
     }

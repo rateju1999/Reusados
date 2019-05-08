@@ -6,40 +6,63 @@
     android:orientation="vertical"
     android:gravity="center"
     tools:context=".FragmentPrendaDetalle">
-
+    <LinearLayout
+        android:layout_width="350dp"
+        android:layout_height="450dp"
+        android:orientation="vertical"
+        android:layout_marginTop="3dp"
+        android:padding="2dp"
+        android:background="#000"
+        >
     <ImageView
         android:id="@+id/detalle_prenda_imagen"
-        android:layout_width="392dp"
-        android:layout_height="416dp"
-        android:background="#2d2d2d"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/reusado_logo_bueno"
         android:scaleType="centerCrop" />
+    </LinearLayout>
 
             <TextView
                 android:id="@+id/detalle_nombre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text=""
-                android:textSize="12sp" />
+                android:textStyle="bold"
+                android:textColor="#000"
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/detalle_precio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:textSize="12sp" />
             <TextView
                 android:id="@+id/detalle_talla"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:textSize="12sp" />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="1dp"
+            android:background="#000"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="3dp"
+            android:layout_marginLeft="3dp"
 
+            >
             <Button
                 android:id="@+id/detale_boton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:padding="20dp" />
+                android:padding="20dp"
+                android:background="#fff"
+                android:textColor="#000"
+                android:textSize="15sp"
+                android:text="COMPRAR"
+                    /></RelativeLayout>
+
 
 </LinearLayout>
