@@ -1,5 +1,6 @@
 package com.example.reusados;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -7,10 +8,14 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 
 import com.example.reusados.fragments.FragmentOpc1;
 import com.example.reusados.fragments.FragmentOpc2;
@@ -37,19 +42,25 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+
         //Necesitamos la referencia al drawerlayout para cerrarlo al pulsar sobre una opción
         drawerLayout = (DrawerLayout) findViewById(R.id.mainActivity);
 
         //Menu Navigation listener
         navView = (NavigationView) findViewById(R.id.nav_view);
         navView.setNavigationItemSelectedListener(this);
-               FragmentManager fragmentManager = getSupportFragmentManager();
+        navView.setBackgroundColor(Color.WHITE);
+
+
+
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
 
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        FragmentMain fragmentoMain = FragmentMain.newInstance();
-
-        fragmentTransaction.replace(R.id.fragment_container, fragmentoMain);
+//        FragmentMain fragmentoMain = FragmentMain.newInstance();
+//
+//        fragmentTransaction.replace(R.id.fragment_container, fragmentoMain);
 
 
 //        FragmentPrenda fragmentoMain = FragmentPrenda.newInstance("articulos");
@@ -57,9 +68,9 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
 //        fragmentTransaction.replace(R.id.fragment_container, fragmentoMain);
 
 //
-//        FragmentTiposPrenda fragmentoMain = FragmentTiposPrenda.newInstance();
-//
-//        fragmentTransaction.replace(R.id.fragment_container, fragmentoMain);
+        FragmentTiposPrenda fragmentoMain = FragmentTiposPrenda.newInstance();
+
+        fragmentTransaction.replace(R.id.fragment_container, fragmentoMain);
 
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
@@ -71,20 +82,18 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
         Fragment fragment = null;
         switch (menuItem.getItemId()) {
             case R.id.menu_opcion_1:
-                fragment = FragmentOpc1.newInstance();
+                fragment = FragmentMain.newInstance();
                 break;
             case R.id.menu_opcion_2:
-                fragment = FragmentOpc2.newInstance();
+                fragment = FragmentTiposPrenda.newInstance();
                 break;
             case R.id.menu_opcion_3:
-                fragment = FragmentOpc3.newInstance();
+                fragment = FragmentPrenda.newInstance("TODAS");
                 break;
             case R.id.menu_subopcion_1:
                 fragment = FragmentSubOpc1.newInstance();
                 break;
-            case R.id.menu_subopcion_2:
-                fragment = FragmentSubOpc2.newInstance();
-                break;
+
         }
 
         //Cambiamos el fragment

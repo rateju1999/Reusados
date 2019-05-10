@@ -11,8 +11,7 @@
         android:layout_height="450dp"
         android:orientation="vertical"
         android:layout_marginTop="3dp"
-        android:padding="2dp"
-        android:background="#000"
+
         >
     <ImageView
         android:id="@+id/detalle_prenda_imagen"
@@ -47,7 +46,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="1dp"
-            android:background="#000"
             android:layout_marginTop="5dp"
             android:layout_marginRight="3dp"
             android:layout_marginLeft="3dp"
@@ -58,8 +56,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="20dp"
-                android:background="#fff"
-                android:textColor="#000"
                 android:textSize="15sp"
                 android:text="COMPRAR"
                     /></RelativeLayout>

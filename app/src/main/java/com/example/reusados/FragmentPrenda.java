@@ -197,20 +197,29 @@ public class FragmentPrenda extends Fragment implements ChildEventListener,View.
                 flag = true;
                 busqueda = "zapatilla";
                 break;
+            case "TODAS":
+                bdNodoReusados = FirebaseDatabase.getInstance().getReference()
+                    .child("articulos");
+
+                break;
             default:
 
                 break;
 
 
         }
+        if (palabra.equalsIgnoreCase("todas")){
 
-        if (flag == true) {
-             bdNodoReusados = FirebaseDatabase.getInstance().getReference()
-                    .child("prendas").child(busqueda);
-        } else if (flag == false) {
-             bdNodoReusados = FirebaseDatabase.getInstance().getReference()
-                .child("articulos").orderByChild("marca").equalTo(busqueda);
+        }else{
+            if (flag == true) {
+                bdNodoReusados = FirebaseDatabase.getInstance().getReference()
+                        .child("prendas").child(busqueda);
+            } else if (flag == false) {
+                bdNodoReusados = FirebaseDatabase.getInstance().getReference()
+                        .child("articulos").orderByChild("marca").equalTo(busqueda);
+            }
         }
+
         bdNodoReusados.addChildEventListener(this);
 
     }
