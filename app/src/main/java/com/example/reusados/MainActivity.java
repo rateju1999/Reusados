@@ -1,7 +1,9 @@
 package com.example.reusados;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -15,19 +17,18 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.example.reusados.fragments.FragmentOpc1;
-import com.example.reusados.fragments.FragmentOpc2;
-import com.example.reusados.fragments.FragmentOpc3;
-import com.example.reusados.fragments.FragmentSubOpc1;
-import com.example.reusados.fragments.FragmentSubOpc2;
 
-public class MainActivity extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener {
+
+public class MainActivity extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     private Toolbar appBar;
     private DrawerLayout drawerLayout;
     private NavigationView navView;
+    private ImageView carrito;
+    private ImageView logo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,26 +56,31 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
 
 
         FragmentManager fragmentManager = getSupportFragmentManager();
-
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
 //        FragmentMain fragmentoMain = FragmentMain.newInstance();
-//
 //        fragmentTransaction.replace(R.id.fragment_container, fragmentoMain);
 
 
 //        FragmentPrenda fragmentoMain = FragmentPrenda.newInstance("articulos");
-//
 //        fragmentTransaction.replace(R.id.fragment_container, fragmentoMain);
 
-//
+
         FragmentTiposPrenda fragmentoMain = FragmentTiposPrenda.newInstance();
 
         fragmentTransaction.replace(R.id.fragment_container, fragmentoMain);
 
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
+
+
+        carrito = findViewById(R.id.carrito);
+        carrito.setOnClickListener(this);
+        logo = findViewById(R.id.logoReusado);
+        logo.setOnClickListener(this);
+
     }
+
 
     @Override
     public boolean onNavigationItemSelected(MenuItem menuItem) {
@@ -91,7 +97,10 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
                 fragment = FragmentPrenda.newInstance("TODAS");
                 break;
             case R.id.menu_subopcion_1:
-                fragment = FragmentSubOpc1.newInstance();
+                fragment = FragmentInfo.newInstance();
+                break;
+            case R.id.carrito:
+                fragment = FragmentInfo.newInstance();
                 break;
 
         }
@@ -136,6 +145,26 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
         } else {
             getSupportFragmentManager().popBackStack();
         }
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.carrito:
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            FragmentInfo fragmentoMain = FragmentInfo.newInstance();
+            fragmentTransaction.replace(R.id.fragment_container, fragmentoMain);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
+                break;
+            case R.id.logoReusado:
+                Uri uri = Uri.parse("https://reusadovintage.com/");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+                break;
+        }
+
     }
 }
 

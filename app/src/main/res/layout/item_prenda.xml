@@ -29,6 +29,7 @@
             android:textSize="13sp"
             android:gravity="center"
             android:layout_marginTop="10dp"
+            style="@style/tipoLetra"
             />
         <TextView
             android:id="@+id/prenda_precio_item"

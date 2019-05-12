@@ -39,16 +39,6 @@ public class FragmentPrenda extends Fragment implements ChildEventListener,View.
         fragment.setArguments(args);
         return fragment;
     }
-
-    //HE QUITADO ON ATTACH, ON DETACH SI FALLA POR ALGUN MOTIVO EXTRAÑO VUELVELOS A INSERTAR
-    public static FragmentPrenda newInstance(String param1, String param2) {
-        FragmentPrenda fragment = new FragmentPrenda();
-        Bundle args = new Bundle();
-
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,9 +80,14 @@ public class FragmentPrenda extends Fragment implements ChildEventListener,View.
     public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
         Prenda p = dataSnapshot.getValue(Prenda.class);
         prendas.add(p);
-        myAdapter.notifyDataSetChanged();
+
+        if (prendas.size() >= 9){
+            myAdapter.notifyDataSetChanged();
+
+        }
 
     }
+
 
     @Override
     public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {

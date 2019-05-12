@@ -17,7 +17,13 @@
 
     </style>
     <style name="NavigationViewStyle">
-        <item name="android:textSize">20sp</item> <!-- menu item text size-->
+        <item name="android:textSize">30sp</item> <!-- menu item text size-->
         <item name="android:listPreferredItemHeightSmall">80dp</item><!-- menu item height-->
+        <item name="android:fontFamily">@font/geosanslight</item>
+    </style>
+    <style name="tipoLetra">
+        <item name="android:textSize">15sp</item>
+        <item name="android:fontFamily">@font/geosanslight</item>
+        <item name="android:textStyle">bold</item>
     </style>
 </resources>

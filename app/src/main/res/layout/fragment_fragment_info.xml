@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FragmentInfo">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="REUSADO VINTAGE"
+            style="@style/tipoLetra"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:textColor="#000"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="HORARIO"
+            style="@style/tipoLetra"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:textColor="#000"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="De Lunes a Viernes de 10:00 a 14:00 y 17:00 a 21:00"
+            style="@style/tipoLetra"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="RECOGIDA EN VALENCIA"
+            style="@style/tipoLetra"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:textColor="#000"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="En la web, al realizar un pedido, existe la posibilidad de pasarte por nuestro almacén, en: C/ ZARRA, 13 - Bajo Derecha; para recoger tus prendas de manera física. Esta opción es totalmente gratuita y te ahorrará los costes de envío."
+            style="@style/tipoLetra"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DEVOLUCIONES"
+            style="@style/tipoLetra"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:textColor="#000"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Para proceder a una devolución deberás envíanos el paquete a nuestro almacén en un plazo de 15 días desde la realización del pedido. Todo paquete recibido a posteriori no podrá ser objeto de devolución.
+
+Tu paquete debe incluir una impresión del correo de confirmación de pedido, que recibiste en tu email (o bandeja de spam) al realizar la compra. Cuando recibamos tu paquete, te contactaremos vía whatsapp o email para gestionarlo lo más rápido posible. Te facilitaremos un cupón por el importe de la prenda adquirida, el cual se canjea al realizar un pedido (se resta la cuantía del cupón al total del pedido). El cupón se puede utilizar en diferentes ocasiones hasta que se consuma en su totalidad."
+            style="@style/tipoLetra"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ARTICULOS DAÑADOS"
+            style="@style/tipoLetra"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:textColor="#000"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="En caso de que recibas un artículo dañado,o en claro mal estado impropio del paso del tiempo es necesario que nos contactes vía email a: reusadopcontacto@gmail.com. De este modo gestionaremos la recogida de la prenda de manera gratuita. Por favor, no nos devuelvas la prenda defectuosa sin previo aviso ya que en este caso, no nos podremos hacer cargo de los gastos de envío generados.
+            Los artículos que tengan un descuento igual o superior al 40% no se pueden cambiar ni devolver, a excepción de los dañados.Conservar siempre el ticket de envío como prueba de que el envío fue realizado."
+            style="@style/tipoLetra"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:layout_marginTop="20dp"
+            />
+
+    </LinearLayout>
+
+</ScrollView>
