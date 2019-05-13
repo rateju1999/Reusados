@@ -16,6 +16,13 @@
         android:textSize="30sp"
         android:layout_marginTop="15dp"
         />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Info: Toca algun producto para eliminarlo de Compras"
+        style="@style/tipoLetra"
+        />
     <android.support.v7.widget.RecyclerView
         android:layout_marginTop="10dp"
         android:id="@+id/recyclerviewCarrito"

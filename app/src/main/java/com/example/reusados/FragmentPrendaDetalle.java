@@ -96,13 +96,6 @@ public class FragmentPrendaDetalle extends Fragment implements View.OnClickListe
         DatabaseReference database = FirebaseDatabase.getInstance().getReference().child("carrito");
         database.push().setValue(new Prenda (prendaPasada.getUrlImagenPrenda(),prendaPasada.getPrecio(),prendaPasada.getNombre(),prendaPasada.getTalla()));
 
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        FragmentCarrito fragmentCarrito = FragmentCarrito.newInstance();
-        fragmentTransaction.replace(R.id.fragment_container, fragmentCarrito);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
-
         Toast.makeText(getActivity(),prendaPasada.getNombre() + " añadido a Compras",Toast.LENGTH_SHORT).show();
 
     }

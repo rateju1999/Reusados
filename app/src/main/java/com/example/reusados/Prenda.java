@@ -8,7 +8,10 @@ public class Prenda {
     private String nombre;
     private String talla;
     private String marca;
+    private String key;
     private Bitmap imagenPrenda;
+
+
     public Prenda(){}
 
     public Prenda(String urlPrenda, String precio, String nombre, String talla, Bitmap imagenPrenda) {
@@ -95,6 +98,14 @@ public class Prenda {
 
     public void setTalla(String talla) {
         this.talla = talla;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 }
 

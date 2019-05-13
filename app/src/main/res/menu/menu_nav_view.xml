@@ -17,7 +17,12 @@
         android:title="Todas las Prendas"
         android:checkable="true"/>
     <item
-        android:id="@+id/menu_subopcion_1"
+        android:id="@+id/menu_opcion_4"
+
+        android:title="Compras"
+        android:checkable="true"/>
+    <item
+        android:id="@+id/menu_opcion_5"
 
         android:title="Sobre Reusados"
         android:checkable="true"/>

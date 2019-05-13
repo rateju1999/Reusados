@@ -96,12 +96,13 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
             case R.id.menu_opcion_3:
                 fragment = FragmentPrenda.newInstance("TODAS");
                 break;
-            case R.id.menu_subopcion_1:
+            case R.id.menu_opcion_4:
+                fragment = FragmentCarrito.newInstance();
+                break;
+            case R.id.menu_opcion_5:
                 fragment = FragmentInfo.newInstance();
                 break;
-            case R.id.carrito:
-                fragment = FragmentInfo.newInstance();
-                break;
+
 
         }
 
