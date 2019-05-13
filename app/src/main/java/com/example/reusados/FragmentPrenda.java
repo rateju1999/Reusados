@@ -80,11 +80,9 @@ public class FragmentPrenda extends Fragment implements ChildEventListener,View.
     public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
         Prenda p = dataSnapshot.getValue(Prenda.class);
         prendas.add(p);
+        myAdapter.notifyDataSetChanged();
 
-        if (prendas.size() >= 9){
-            myAdapter.notifyDataSetChanged();
 
-        }
 
     }
 

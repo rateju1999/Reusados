@@ -7,6 +7,8 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,10 +16,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.InputStream;
 
-public class FragmentPrendaDetalle extends Fragment {
+public class FragmentPrendaDetalle extends Fragment implements View.OnClickListener {
 
     private static Prenda prendaPasada;
     private ImageView imagen;
@@ -53,7 +59,7 @@ public class FragmentPrendaDetalle extends Fragment {
         precio= vistaLayout.findViewById(R.id.detalle_precio);
         talla= vistaLayout.findViewById(R.id.detalle_talla);
         botonCompra = vistaLayout.findViewById(R.id.detale_boton);
-
+        botonCompra.setOnClickListener(this);
         //PIENSA QUE COÑO QUIERES HACER CON EL BOTON DE COMPRA
         //PIENSA QUE COÑO QUIERES HACER CON EL BOTON DE COMPRA
         //PIENSA QUE COÑO QUIERES HACER CON EL BOTON DE COMPRA
@@ -83,6 +89,22 @@ public class FragmentPrendaDetalle extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onClick(View view) {
+        DatabaseReference database = FirebaseDatabase.getInstance().getReference().child("carrito");
+        database.push().setValue(new Prenda (prendaPasada.getUrlImagenPrenda(),prendaPasada.getPrecio(),prendaPasada.getNombre(),prendaPasada.getTalla()));
+
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        FragmentCarrito fragmentCarrito = FragmentCarrito.newInstance();
+        fragmentTransaction.replace(R.id.fragment_container, fragmentCarrito);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+
+        Toast.makeText(getActivity(),prendaPasada.getNombre() + " añadido a Compras",Toast.LENGTH_SHORT).show();
+
     }
 
     public interface OnFragmentInteractionListener {

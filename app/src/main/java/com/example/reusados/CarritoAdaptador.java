@@ -16,11 +16,11 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 public class CarritoAdaptador extends RecyclerView.Adapter<CarritoAdaptador.CarritoPrendaViewHolder> implements View.OnClickListener{
-    private ArrayList<CarritoPrenda> prendas;
+    private ArrayList<Prenda> prendas;
     private Context context;
     private View.OnClickListener mlistener;
 
-    public CarritoAdaptador(ArrayList<CarritoPrenda> prendas, Context context) {
+    public CarritoAdaptador(ArrayList<Prenda> prendas, Context context) {
         this.prendas = prendas;
         this.context = context;
     }
@@ -38,7 +38,8 @@ public class CarritoAdaptador extends RecyclerView.Adapter<CarritoAdaptador.Carr
     @Override
     public void onBindViewHolder(CarritoPrendaViewHolder holder, int position) {
         holder.nombre.setText(prendas.get(position).getNombre());
-        holder.precio.setText(prendas.get(position).getPrecio() + "€");
+        holder.precio.setText("Precio: " + prendas.get(position).getPrecio() + "€");
+        holder.talla.setText("Talla: " + prendas.get(position).getTalla());
         Bitmap imagen = prendas.get(position).getImagenPrenda();
         if(imagen == null) {
             holder.carrito_imagen_prenda.setImageResource(R.drawable.reusado_logo_bueno);
@@ -71,8 +72,7 @@ public class CarritoAdaptador extends RecyclerView.Adapter<CarritoAdaptador.Carr
     public class CarritoPrendaViewHolder extends RecyclerView.ViewHolder {
         private Context context;
         private ImageView carrito_imagen_prenda;
-        private TextView nombre;
-        private TextView precio;
+        private TextView precio, nombre, talla;
 
 
         public CarritoPrendaViewHolder(View itemView) {
@@ -81,6 +81,8 @@ public class CarritoAdaptador extends RecyclerView.Adapter<CarritoAdaptador.Carr
             this.carrito_imagen_prenda =  itemView.findViewById(R.id.carrito_imagen);
             this.nombre = itemView.findViewById(R.id.carrito_nombre_prenda);
             this.precio = itemView.findViewById(R.id.carrito_precio);
+            this.talla = itemView.findViewById(R.id.carrito_talla);
+
         }
 
 

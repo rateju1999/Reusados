@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
             case R.id.carrito:
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            FragmentInfo fragmentoMain = FragmentInfo.newInstance();
+            FragmentCarrito fragmentoMain = FragmentCarrito.newInstance();
             fragmentTransaction.replace(R.id.fragment_container, fragmentoMain);
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
