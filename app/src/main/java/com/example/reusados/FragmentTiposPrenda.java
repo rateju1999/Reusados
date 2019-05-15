@@ -58,7 +58,6 @@ public class FragmentTiposPrenda extends Fragment  implements  View.OnClickListe
         tipos.add(new TipoPrenda("CHAQUETA",R.drawable.chaqueta_sf));
         tipos.add(new TipoPrenda("DEPORTE",R.drawable.deporte_sf));
         tipos.add(new TipoPrenda("HAWAIANA",R.drawable.hawaiana_sf));
-        tipos.add(new TipoPrenda("JERSEY",R.drawable.jersey_sf));
         tipos.add(new TipoPrenda("POLO",R.drawable.polo_sf));
         tipos.add(new TipoPrenda("SUDADERA",R.drawable.sudadera_sf));
         tipos.add(new TipoPrenda("ZAPATILLAS",R.drawable.zapatilla_sf));

@@ -6,9 +6,10 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,20 +19,29 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 import java.io.InputStream;
+import java.util.ArrayList;
 
-public class FragmentPrendaDetalle extends Fragment implements View.OnClickListener {
+public class FragmentPrendaDetalle extends Fragment implements View.OnClickListener , ChildEventListener {
 
     private static Prenda prendaPasada;
     private ImageView imagen;
-    private TextView nombre, precio,talla;
+    private TextView nombre, precio,talla,carrito_numero;
     private Button botonCompra;
+    private int numPrendasCarrito;
+    private ArrayList<Prenda> prendas;
+
 
 
     private OnFragmentInteractionListener mListener;
+    private Context context;
 
     public FragmentPrendaDetalle() {
     }
@@ -58,26 +68,22 @@ public class FragmentPrendaDetalle extends Fragment implements View.OnClickListe
         nombre= vistaLayout.findViewById(R.id.detalle_nombre);
         precio= vistaLayout.findViewById(R.id.detalle_precio);
         talla= vistaLayout.findViewById(R.id.detalle_talla);
+        carrito_numero = vistaLayout.findViewById(R.id.carrito_numero);
         botonCompra = vistaLayout.findViewById(R.id.detale_boton);
         botonCompra.setOnClickListener(this);
-        //PIENSA QUE COÑO QUIERES HACER CON EL BOTON DE COMPRA
-        //PIENSA QUE COÑO QUIERES HACER CON EL BOTON DE COMPRA
-        //PIENSA QUE COÑO QUIERES HACER CON EL BOTON DE COMPRA
-        //PIENSA QUE COÑO QUIERES HACER CON EL BOTON DE COMPRA
+        prendas = new ArrayList<>();
         new DownloadImageTask(imagen)
                 .execute(prendaPasada.getUrlImagenPrenda());
         nombre.setText(prendaPasada.getNombre());
         precio.setText("Precio: " +prendaPasada.getPrecio()+"€");
         talla.setText("Talla: " + prendaPasada.getTalla());
-
+        mListener = (OnFragmentInteractionListener) getActivity();
+        Query bdNodoReusados = FirebaseDatabase.getInstance().getReference()
+                .child("carrito");
+        bdNodoReusados.addChildEventListener(this);
         return vistaLayout;
     }
 
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
 
     @Override
     public void onAttach(Context context) {
@@ -95,13 +101,44 @@ public class FragmentPrendaDetalle extends Fragment implements View.OnClickListe
     public void onClick(View view) {
         DatabaseReference database = FirebaseDatabase.getInstance().getReference().child("carrito");
         database.push().setValue(new Prenda (prendaPasada.getUrlImagenPrenda(),prendaPasada.getPrecio(),prendaPasada.getNombre(),prendaPasada.getTalla()));
-
+        numPrendasCarrito = prendas.size();
+        mListener.cambiarNumero(numPrendasCarrito + 1);
         Toast.makeText(getActivity(),prendaPasada.getNombre() + " añadido a Compras",Toast.LENGTH_SHORT).show();
+
 
     }
 
+    @Override
+    public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+        Prenda p = dataSnapshot.getValue(Prenda.class);
+        p.setKey(dataSnapshot.getKey());
+        prendas.add(p);
+
+    }
+
+    @Override
+    public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+    }
+
+    @Override
+    public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+    }
+
+    @Override
+    public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+    }
+
+    @Override
+    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+    }
+
+
     public interface OnFragmentInteractionListener {
-        void onFragmentInteraction(Uri uri);
+        public void cambiarNumero(int num);
     }
     //TAREA ASINCRONA
     public class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {

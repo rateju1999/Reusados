@@ -30,7 +30,7 @@ public class FragmentPrenda extends Fragment implements ChildEventListener,View.
     private ArrayList<Prenda> prendas;
     private RecyclerView recyclerView;
     private PrendaAdaptador myAdapter;
-    private OnFragmentInteractionListener mListener;
+
 
     public static FragmentPrenda newInstance(String PalabraDebusqueda) {
         FragmentPrenda fragment = new FragmentPrenda();
@@ -59,7 +59,7 @@ public class FragmentPrenda extends Fragment implements ChildEventListener,View.
        myAdapter = new PrendaAdaptador(prendas,getActivity());
        myAdapter.setOnClickListener(this);
        recyclerView.setAdapter(myAdapter);
-        rellenadoDelRecycler(busqueda);
+       rellenadoDelRecycler(busqueda);
          return vistaLayout;
     }
     @Override
@@ -108,10 +108,7 @@ public class FragmentPrenda extends Fragment implements ChildEventListener,View.
     }
 
 
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
+
 
     public void rellenadoDelRecycler(String palabra) {
         boolean flag = true;
@@ -177,6 +174,10 @@ public class FragmentPrenda extends Fragment implements ChildEventListener,View.
             case "HAWAIANA":
                 flag = true;
                 busqueda = "hawaiana";
+                break;
+            case "JERSEY":
+                flag = true;
+                busqueda = "polo";
                 break;
             case "POLO":
                 flag = true;

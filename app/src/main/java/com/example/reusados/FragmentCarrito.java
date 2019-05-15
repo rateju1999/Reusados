@@ -36,6 +36,7 @@ public class FragmentCarrito extends Fragment implements ChildEventListener,View
     private CarritoAdaptador myAdapter;
     private OnFragmentInteractionListener mListener;
     AlertDialog.Builder ventanaFlotante;
+    private int numPrendasCarrito;
 
 
     public FragmentCarrito() {
@@ -68,7 +69,7 @@ public class FragmentCarrito extends Fragment implements ChildEventListener,View
         myAdapter = new CarritoAdaptador(prendas,getActivity());
         myAdapter.setOnClickListener(this);
         recyclerView.setAdapter(myAdapter);
-
+        mListener = (FragmentCarrito.OnFragmentInteractionListener) getActivity();
         Query bdNodoReusados = FirebaseDatabase.getInstance().getReference()
                 .child("carrito");
         bdNodoReusados.addChildEventListener(this);
@@ -94,6 +95,8 @@ public class FragmentCarrito extends Fragment implements ChildEventListener,View
                     public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
                         if(databaseError == null){
                             Toast.makeText(getActivity(),"Prenda borrada",Toast.LENGTH_LONG).show();
+                            numPrendasCarrito = prendas.size();
+                            mListener.cambiarNumero(numPrendasCarrito );
 
                         }else{
                             Toast.makeText(getActivity(),"Se ha producido un error",Toast.LENGTH_LONG).show();
@@ -120,6 +123,7 @@ public class FragmentCarrito extends Fragment implements ChildEventListener,View
         p.setKey(dataSnapshot.getKey());
         prendas.add(p);
         myAdapter.notifyDataSetChanged();
+
     }
 
     @Override
@@ -151,7 +155,6 @@ public class FragmentCarrito extends Fragment implements ChildEventListener,View
     }
 
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        public void cambiarNumero(int num);
     }
 }

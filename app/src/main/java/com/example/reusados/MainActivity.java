@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -19,17 +21,27 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+
+import java.util.ArrayList;
 
 
-
-public class MainActivity extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
-
+public class MainActivity extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener, ChildEventListener, View.OnClickListener , FragmentPrendaDetalle.OnFragmentInteractionListener,FragmentCarrito.OnFragmentInteractionListener{
+    public static final int NUMERO_CARRITO = 0;
     private Toolbar appBar;
     private DrawerLayout drawerLayout;
     private NavigationView navView;
     private ImageView carrito;
     private ImageView logo;
-
+    public TextView carrito_numero;
+    private ArrayList<Prenda> prendas;
+    private int numPrendasCarrito;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,9 +64,13 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
         navView.setNavigationItemSelectedListener(this);
         navView.setBackgroundColor(Color.WHITE);
 
-
-
-
+        prendas = new ArrayList<>();
+        Query bdNodoReusados = FirebaseDatabase.getInstance().getReference()
+                .child("carrito");
+        bdNodoReusados.addChildEventListener(this);
+        numPrendasCarrito = prendas.size();
+        carrito_numero = findViewById(R.id.carrito_numero);
+        carrito_numero.setText("" + numPrendasCarrito);
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
@@ -72,15 +88,12 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
 
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
-
-
         carrito = findViewById(R.id.carrito);
         carrito.setOnClickListener(this);
         logo = findViewById(R.id.logoReusado);
         logo.setOnClickListener(this);
 
     }
-
 
     @Override
     public boolean onNavigationItemSelected(MenuItem menuItem) {
@@ -165,6 +178,39 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
                 startActivity(intent);
                 break;
         }
+
+    }
+
+    @Override
+    public void cambiarNumero(int num) {
+        carrito_numero.setText("" + num);
+
+    }
+
+    @Override
+    public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+        Prenda p = dataSnapshot.getValue(Prenda.class);
+        p.setKey(dataSnapshot.getKey());
+        prendas.add(p);
+    }
+
+    @Override
+    public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+    }
+
+    @Override
+    public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+    }
+
+    @Override
+    public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+    }
+
+    @Override
+    public void onCancelled(@NonNull DatabaseError databaseError) {
 
     }
 }
