@@ -177,7 +177,7 @@ public class FragmentPrenda extends Fragment implements ChildEventListener,View.
                 break;
             case "JERSEY":
                 flag = true;
-                busqueda = "polo";
+                busqueda = "jersey";
                 break;
             case "POLO":
                 flag = true;

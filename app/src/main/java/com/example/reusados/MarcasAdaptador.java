@@ -42,7 +42,7 @@ public class MarcasAdaptador extends RecyclerView.Adapter<MarcasAdaptador.Marcas
     public void onBindViewHolder(MarcasViewHolder holder, int position) {
         Bitmap imagen = imagenes_marcas.get(position).getImgMarca();
         if(imagen == null) {
-            holder.img_marcas.setImageResource(R.drawable.right_arrow);
+            holder.img_marcas.setImageResource(R.drawable.reusado_logo_bueno);
             new DownloadImageTask(holder.img_marcas, position)
                     .execute(imagenes_marcas.get(position).getUrl());
         }else{

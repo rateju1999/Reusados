@@ -11,60 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <!--<ImageView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="200dp"-->
-            <!--android:src="@drawable/banner1"-->
-            <!--/>-->
-        <!--<ImageView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="200dp"-->
-            <!--android:src="@drawable/banner2"-->
-            <!--/>-->
-        <!--<ImageView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="200dp"-->
-            <!--android:src="@drawable/banner3"-->
-            <!--/>-->
-        <!--<ImageView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:src="@drawable/banner4"-->
-            <!--/>-->
-        <!--<ImageView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:src="@drawable/banner5"-->
-            <!--/>-->
-        <!--<ImageView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:src="@drawable/banner6"-->
-            <!--/>-->
-        <!--<ImageView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:src="@drawable/banner7"-->
-            <!--/>-->
-        <!--<ImageView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:src="@drawable/banner8"-->
-            <!--/>-->
-        <!--<ImageView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:src="@drawable/banner9"-->
-            <!--/>-->
-        <!--<ImageView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:src="@drawable/banner10"-->
-            <!--/>-->
         <ImageView
-            android:layout_height="wrap_content"
+            android:layout_height="450dp"
             android:layout_width="wrap_content"
-            android:src="@drawable/banner11"
+            android:src="@drawable/banner12_fin"
             />
 
         <android.support.v7.widget.RecyclerView
@@ -72,9 +22,33 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
+            android:background="#4B4B4B"
 />
+        <ImageView
+            android:layout_height="641dp"
+            android:layout_width="wrap_content"
+            android:src="@drawable/banner8_fin1"
+            />
 
+        <ImageView
+            android:layout_height="539.5dp"
+            android:layout_width="wrap_content"
+            android:src="@drawable/banner10_fin"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="#FFFFFF"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="© 2019 Reusados Vintage ®"
+                android:textStyle="bold"
+                android:textColor="#000"
+                android:gravity="center"
+                />
+        </LinearLayout>
     </LinearLayout>
-
-
 </ScrollView>
