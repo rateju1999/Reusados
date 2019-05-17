@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <ImageView
+            android:id="@+id/main_img_todas"
             android:layout_height="450dp"
             android:layout_width="wrap_content"
             android:src="@drawable/banner12_fin"
@@ -25,12 +26,14 @@
             android:background="#4B4B4B"
 />
         <ImageView
+            android:id="@+id/main_img_sudaderas"
             android:layout_height="641dp"
             android:layout_width="wrap_content"
             android:src="@drawable/banner8_fin1"
             />
 
         <ImageView
+            android:id="@+id/main_img_chaquetas"
             android:layout_height="539.5dp"
             android:layout_width="wrap_content"
             android:src="@drawable/banner10_fin"
@@ -43,7 +46,7 @@
             >
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="25dp"
                 android:text="© 2019 Reusados Vintage ®"
                 android:textStyle="bold"
                 android:textColor="#000"

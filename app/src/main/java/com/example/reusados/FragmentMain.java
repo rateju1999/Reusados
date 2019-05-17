@@ -1,17 +1,19 @@
 package com.example.reusados;
 
-import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -32,6 +34,7 @@ public class FragmentMain extends Fragment implements  View.OnClickListener, Chi
     private RecyclerView.LayoutManager layoutManager;
     private MarcasAdaptador marcasAdaptador;
     private ArrayList<Marca> marcas;
+    private ImageView imgTodas, imgSudaderas, imgChaquetas;
 
     public FragmentMain() {
     }
@@ -61,6 +64,12 @@ public class FragmentMain extends Fragment implements  View.OnClickListener, Chi
         marcasAdaptador = new MarcasAdaptador(marcas,getActivity());
         marcasAdaptador.setOnClickListener(this);
         recyclerView.setAdapter(marcasAdaptador);
+        imgTodas = vistaLayout.findViewById(R.id.main_img_todas);
+        imgTodas.setOnClickListener(this);
+        imgSudaderas = vistaLayout.findViewById(R.id.main_img_sudaderas);
+        imgSudaderas.setOnClickListener(this);
+        imgChaquetas = vistaLayout.findViewById(R.id.main_img_chaquetas);
+        imgChaquetas.setOnClickListener(this);
 
         //PARTE DEL FIREBASE
         Query bdNodoReusados = FirebaseDatabase.getInstance().getReference()
@@ -84,7 +93,25 @@ public class FragmentMain extends Fragment implements  View.OnClickListener, Chi
 
     @Override
     public void onClick(View view) {
+        String palabra = null;
 
+        if(view.getId() == R.id.main_img_chaquetas){
+            palabra = "CHAQUETA";
+        } else if(view.getId() == R.id.main_img_todas){
+            palabra = "TODAS";
+        } else if(view.getId() == R.id.main_img_sudaderas){
+            palabra = "SUDADERA";
+        }else{
+            int position = recyclerView.getChildAdapterPosition(view);
+            Marca marcaSeleccionada = marcas.get(position);
+            palabra = marcaSeleccionada.getNombre();
+        }
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        FragmentPrenda fragmentPrenda = FragmentPrenda.newInstance(palabra);
+        fragmentTransaction.replace(R.id.fragment_container, fragmentPrenda);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 
     @Override
